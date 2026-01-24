@@ -1,4 +1,4 @@
-from tests.context import yfinance as yf
+from tests.context import gyfinance as yf
 from tests.context import session_gbl
 
 import unittest

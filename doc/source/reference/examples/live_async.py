@@ -1,5 +1,5 @@
 import asyncio
-import yfinance as yf
+import gyfinance as yf
 
 # define your message callback
 def message_handler(message):

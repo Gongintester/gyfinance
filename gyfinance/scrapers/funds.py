@@ -1,11 +1,11 @@
 import pandas as pd
 from typing import Dict, Optional
 
-from yfinance import utils
-from yfinance.config import YfConfig
-from yfinance.const import _BASE_URL_
-from yfinance.data import YfData
-from yfinance.exceptions import YFDataException
+from gyfinance import utils
+from gyfinance.config import YfConfig
+from gyfinance.const import _BASE_URL_
+from gyfinance.data import YfData
+from gyfinance.exceptions import YFDataException
 
 _QUOTE_SUMMARY_URL_ = f"{_BASE_URL_}/v10/finance/quoteSummary/"
 

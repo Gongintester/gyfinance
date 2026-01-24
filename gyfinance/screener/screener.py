@@ -3,8 +3,8 @@ from typing import Union
 import warnings
 from json import dumps
 
-from yfinance.const import _QUERY1_URL_
-from yfinance.data import YfData
+from gyfinance.const import _QUERY1_URL_
+from gyfinance.data import YfData
 from ..utils import dynamic_docstring, generate_list_table_from_dict_universal
 
 from .query import EquityQuery as EqyQy

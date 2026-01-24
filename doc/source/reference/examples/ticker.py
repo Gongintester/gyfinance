@@ -1,4 +1,4 @@
-import yfinance as yf
+import gyfinance as yf
 
 dat = yf.Ticker("MSFT")
 

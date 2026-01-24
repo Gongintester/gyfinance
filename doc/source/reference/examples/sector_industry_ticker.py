@@ -1,4 +1,4 @@
-import yfinance as yf
+import gyfinance as yf
 # Ticker to Sector and Industry
 msft = yf.Ticker('MSFT')
 tech = yf.Sector(msft.info.get('sectorKey'))

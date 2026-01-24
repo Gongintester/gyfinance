@@ -1,4 +1,4 @@
-import yfinance as yf
+import gyfinance as yf
 
 # get list of quotes
 quotes = yf.Search("AAPL", max_results=10).quotes

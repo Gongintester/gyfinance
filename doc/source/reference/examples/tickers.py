@@ -1,4 +1,4 @@
-import yfinance as yf
+import gyfinance as yf
 
 tickers = yf.Tickers('msft aapl goog')
 

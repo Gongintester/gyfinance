@@ -9,10 +9,10 @@ import pandas as pd
 import time as _time
 import warnings
 
-from yfinance import shared, utils
-from yfinance.config import YfConfig
-from yfinance.const import _BASE_URL_, _PRICE_COLNAMES_
-from yfinance.exceptions import YFDataException, YFInvalidPeriodError, YFPricesMissingError, YFRateLimitError, YFTzMissingError
+from gyfinance import shared, utils
+from gyfinance.config import YfConfig
+from gyfinance.const import _BASE_URL_, _PRICE_COLNAMES_
+from gyfinance.exceptions import YFDataException, YFInvalidPeriodError, YFPricesMissingError, YFRateLimitError, YFTzMissingError
 
 class PriceHistory:
     def __init__(self, data, ticker, tz, session=None):

@@ -1,4 +1,4 @@
-import yfinance as yf
+import gyfinance as yf
 from datetime import datetime, timedelta
 
 # Default init (today + 7 days)

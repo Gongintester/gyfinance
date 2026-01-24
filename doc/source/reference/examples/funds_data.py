@@ -1,4 +1,4 @@
-import yfinance as yf
+import gyfinance as yf
 spy = yf.Ticker('SPY')
 data = spy.funds_data
 

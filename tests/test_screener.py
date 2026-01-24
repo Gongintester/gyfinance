@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from yfinance.screener.screener import screen
-from yfinance.screener.query import EquityQuery
+from gyfinance.screener.screener import screen
+from gyfinance.screener.query import EquityQuery
 
 
 class TestScreener(unittest.TestCase):

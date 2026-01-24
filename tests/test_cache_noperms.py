@@ -8,7 +8,7 @@ Specific test class:
    python -m unittest tests.cache.TestCache
 
 """
-from tests.context import yfinance as yf
+from tests.context import gyfinance as yf
 
 import unittest
 import os

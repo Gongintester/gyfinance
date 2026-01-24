@@ -12,10 +12,10 @@ from datetime import datetime, timedelta
 
 import pandas as pd
 
-from tests.context import yfinance as yf
+from tests.context import gyfinance as yf
 from tests.context import session_gbl
-from yfinance.exceptions import YFPricesMissingError, YFInvalidPeriodError, YFNotImplementedError, YFTickerMissingError, YFTzMissingError, YFDataException
-from yfinance.config import YfConfig
+from gyfinance.exceptions import YFPricesMissingError, YFInvalidPeriodError, YFNotImplementedError, YFTickerMissingError, YFTzMissingError, YFDataException
+from gyfinance.config import YfConfig
 
 import unittest
 # import requests_cache

@@ -15,7 +15,7 @@ import pandas as pd
 
 import unittest
 
-from yfinance.utils import is_valid_period_format, _dts_in_same_interval, _parse_user_dt
+from gyfinance.utils import is_valid_period_format, _dts_in_same_interval, _parse_user_dt
 
 
 class TestPandas(unittest.TestCase):

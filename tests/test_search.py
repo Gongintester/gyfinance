@@ -1,6 +1,6 @@
 import unittest
 
-from tests.context import yfinance as yf
+from tests.context import gyfinance as yf
 
 
 class TestSearch(unittest.TestCase):

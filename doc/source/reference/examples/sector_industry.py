@@ -1,4 +1,4 @@
-import yfinance as yf
+import gyfinance as yf
 
 tech = yf.Sector('technology')
 software = yf.Industry('software-infrastructure')

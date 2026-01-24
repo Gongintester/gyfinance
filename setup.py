@@ -13,7 +13,7 @@ from os import path
 
 # --- get version ---
 version = "unknown"
-with open("yfinance/version.py") as f:
+with open("gyfinance/version.py") as f:
     line = f.read().strip()
     version = line.replace("version = ", "").replace('"', '')
 # --- /get version ---
@@ -26,7 +26,7 @@ with io.open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='yfinance',
+    name='gyfinance',
     version=version,
     description='Download market data from Yahoo! Finance API',
     long_description=long_description,
@@ -37,8 +37,9 @@ setup(
     license='Apache',
     classifiers=[
         'License :: OSI Approved :: Apache Software License',
+        'Development Status :: 2 - GG',
         # 'Development Status :: 3 - Alpha',
-        'Development Status :: 4 - Beta',
+        # 'Development Status :: 4 - Beta',
         # 'Development Status :: 5 - Production/Stable',
 
 
@@ -72,7 +73,7 @@ setup(
     },
     # Include protobuf files for websocket support
     package_data={
-        'yfinance': ['pricing.proto', 'pricing_pb2.py'],
+        'gyfinance': ['pricing.proto', 'pricing_pb2.py'],
     },
     include_package_data=True,
     # Note: Pandas.read_html() needs html5lib & beautifulsoup4
@@ -84,7 +85,7 @@ setup(
 )
 
 print("""
-NOTE: yfinance is not affiliated, endorsed, or vetted by Yahoo, Inc.
+NOTE: yfinance or gyfinance is not affiliated, endorsed, or vetted by Yahoo, Inc.
 
 You should refer to Yahoo!'s terms of use for details on your rights
 to use the actual data downloaded.""")

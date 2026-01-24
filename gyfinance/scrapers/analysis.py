@@ -1,12 +1,12 @@
 import curl_cffi
 import pandas as pd
 
-from yfinance import utils
-from yfinance.config import YfConfig
-from yfinance.const import quote_summary_valid_modules
-from yfinance.data import YfData
-from yfinance.exceptions import YFException
-from yfinance.scrapers.quote import _QUOTE_SUMMARY_URL_
+from gyfinance import utils
+from gyfinance.config import YfConfig
+from gyfinance.const import quote_summary_valid_modules
+from gyfinance.data import YfData
+from gyfinance.exceptions import YFException
+from gyfinance.scrapers.quote import _QUOTE_SUMMARY_URL_
 
 class Analysis:
 

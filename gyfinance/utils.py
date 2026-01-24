@@ -39,9 +39,9 @@ import pytz as _tz
 from dateutil.relativedelta import relativedelta
 from pytz import UnknownTimeZoneError
 
-from yfinance import const
-from yfinance.exceptions import YFException
-from yfinance.config import YfConfig
+from gyfinance import const
+from gyfinance.exceptions import YFException
+from gyfinance.config import YfConfig
 
 # From https://stackoverflow.com/a/59128615
 def attributes(obj):

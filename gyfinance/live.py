@@ -6,9 +6,9 @@ from typing import List, Optional, Callable, Union
 from websockets.sync.client import connect as sync_connect
 from websockets.asyncio.client import connect as async_connect
 
-from yfinance import utils
-from yfinance.config import YfConfig
-from yfinance.pricing_pb2 import PricingData
+from gyfinance import utils
+from gyfinance.config import YfConfig
+from gyfinance.pricing_pb2 import PricingData
 from google.protobuf.json_format import MessageToDict
 
 
