@@ -36,11 +36,11 @@ from . import shared
 from .config import YfConfig
 
 @utils.log_indent_decorator
-def download(tickers, start=None, end=None, actions=False, threads=True,
+def download(tickers:Union[str,list,set,tuple], start=None, end=None, actions=False, threads:Union[bool,int] = True,
              ignore_tz=None, group_by='column', auto_adjust=True, back_adjust=False,
              repair=False, keepna=False, progress=True, period=None, interval="1d",
              prepost=False, rounding=False, timeout=10, session=None,
-             multi_level_index=True) -> Union[_pd.DataFrame, None]:
+             multi_level_index=True) -> tuple[Union[_pd.DataFrame, None], tuple[str]]:
     """
     Download yahoo tickers
     :Parameters:
@@ -90,6 +90,9 @@ def download(tickers, start=None, end=None, actions=False, threads=True,
             Optional. Pass your own session object to be used for all requests
         multi_level_index: bool
             Optional. Always return a MultiIndex DataFrame? Default is True
+
+    :Returns:
+        TODO documentation
     """
     logger = utils.get_yf_logger()
     session = session or requests.Session(impersonate="chrome")
@@ -223,7 +226,7 @@ def download(tickers, start=None, end=None, actions=False, threads=True,
     if not multi_level_index and len(tickers) == 1:
         data = data.droplevel(0 if group_by == 'ticker' else 1, axis=1).rename_axis(None, axis=1)
 
-    return data
+    return (data, errors)
 
 
 def _realign_dfs():
@@ -288,3 +291,4 @@ def _download_one(ticker, start=None, end=None,
     YfConfig.network.hide_exceptions = backup
 
     return data
+
