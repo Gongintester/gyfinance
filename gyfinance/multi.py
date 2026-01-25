@@ -37,10 +37,10 @@ from .config import YfConfig
 
 @utils.log_indent_decorator
 def download(tickers:Union[str,list,set,tuple], start=None, end=None, actions=False, threads:Union[bool,int] = True,
-             ignore_tz=None, group_by='column', auto_adjust=True, back_adjust=False,
-             repair=False, keepna=False, progress=True, period=None, interval="1d",
-             prepost=False, rounding=False, timeout=10, session=None,
-             multi_level_index=True) -> tuple[Union[_pd.DataFrame, None], tuple[str]]:
+             ignore_tz:Union[bool, None]=None, group_by='column', auto_adjust=True, back_adjust=False,
+             repair=False, keepna=False, progress=True, period=None, interval:str = "1d",
+             prepost:Union[bool, None] = False, rounding:Union[float, bool, None] = False, timeout:Union[float, None] = 10.0, session=None,
+             multi_level_index=True) -> tuple[Union[_pd.DataFrame, None], Union[dict[str, str], None]]:
     """
     Download yahoo tickers
     :Parameters:
@@ -81,9 +81,8 @@ def download(tickers:Union[str,list,set,tuple], start=None, end=None, actions=Fa
         ignore_tz: bool
             When combining from different timezones, ignore that part of datetime.
             Default depends on interval. Intraday = False. Day+ = True.
-        rounding: bool
+        rounding: bool : Union[float, None] :  None or float
             Optional. Round values to 2 decimal places?
-        timeout: None or float
             If not None stops waiting for a response after given number of
             seconds. (Can also be a fraction of a second e.g. 0.01)
         session: None or Session
@@ -92,7 +91,8 @@ def download(tickers:Union[str,list,set,tuple], start=None, end=None, actions=Fa
             Optional. Always return a MultiIndex DataFrame? Default is True
 
     :Returns:
-        TODO documentation
+        Padaframe: is data of chart,
+        Dict: is data of error logs 
     """
     logger = utils.get_yf_logger()
     session = session or requests.Session(impersonate="chrome")
@@ -209,12 +209,11 @@ def download(tickers:Union[str,list,set,tuple], start=None, end=None, actions=Fa
                 shared._DFS[tkr].index = shared._DFS[tkr].index.tz_localize(None)
 
     try:
-        data = _pd.concat(shared._DFS.values(), axis=1, sort=True,
-                          keys=shared._DFS.keys(), names=['Ticker', 'Price'])
+        data = _pd.concat(shared._DFS.values(), axis=1, sort=True, keys=shared._DFS.keys(), names=['Ticker', 'Price'])
     except Exception:
         _realign_dfs()
-        data = _pd.concat(shared._DFS.values(), axis=1, sort=True,
-                          keys=shared._DFS.keys(), names=['Ticker', 'Price'])
+        data = _pd.concat(shared._DFS.values(), axis=1, sort=True, keys=shared._DFS.keys(), names=['Ticker', 'Price'])
+        
     data.index = _pd.to_datetime(data.index, utc=not ignore_tz)
     # switch names back to isins if applicable
     data.rename(columns=shared._ISINS, inplace=True)
@@ -226,7 +225,8 @@ def download(tickers:Union[str,list,set,tuple], start=None, end=None, actions=Fa
     if not multi_level_index and len(tickers) == 1:
         data = data.droplevel(0 if group_by == 'ticker' else 1, axis=1).rename_axis(None, axis=1)
 
-    return (data, errors)
+    if shared._ERRORS: return (data, errors)
+    else: return (data, None)
 
 
 def _realign_dfs():
