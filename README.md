@@ -45,12 +45,12 @@
 - `Sector` and `Industry`: sector and industry information
 - `EquityQuery` and `Screener`: build query to screen market
 
-## Installation
+## Installation/Building 
 
-Install `yfinance` from PYPI using `pip`:
+Install/Build `yfinance` from PYPI using `pip`:
 
 ``` {.sourceCode .bash}
-$ pip install yfinance
+$ pip install git+https://github.com/Gongintester/gyfinance.git@gyfinance
 ```
 
 ### [yfinance relies on the community to investigate bugs and contribute code. Here's how you can help.](https://github.com/ranaroussi/yfinance/blob/main/CONTRIBUTING.md)
