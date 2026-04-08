@@ -1,4 +1,4 @@
-{% set name = "yfinance" %}
+{% set name = "gyfinance" %}
 {% set version = "1.2.0" %}
 
 package:

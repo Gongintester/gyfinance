@@ -26,7 +26,7 @@ with io.open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='yfinance',
+    name='gyfinance',
     version=version,
     description='Download market data from Yahoo! Finance API',
     long_description=long_description,
@@ -84,7 +84,7 @@ setup(
 )
 
 print("""
-NOTE: yfinance is not affiliated, endorsed, or vetted by Yahoo, Inc.
+NOTE: yfinance and gyfinance is not affiliated, endorsed, or vetted by Yahoo, Inc.
 
 You should refer to Yahoo!'s terms of use for details on your rights
 to use the actual data downloaded.""")
