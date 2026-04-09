@@ -4,7 +4,7 @@
 # yfinance - market data downloader
 # https://github.com/ranaroussi/yfinance
 
-"""yfinance - market data downloader"""
+"""gyfinance - market data downloader"""
 
 from setuptools import setup, find_packages
 # from codecs import open

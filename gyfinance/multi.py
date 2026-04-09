@@ -176,8 +176,7 @@ def download(tickers:Union[str,list,set,tuple], start=None, end=None, actions=Fa
     if shared._ERRORS:
         # Send errors to logging module
         logger = utils.get_yf_logger()
-        logger.error('\n%.f Failed download%s:' % (
-            len(shared._ERRORS), 's' if len(shared._ERRORS) > 1 else ''))
+        logger.error('\n%.f Failed download%s:' % (len(shared._ERRORS), 's' if len(shared._ERRORS) > 1 else ''))
 
         # Log each distinct error once, with list of symbols affected
         errors = {}

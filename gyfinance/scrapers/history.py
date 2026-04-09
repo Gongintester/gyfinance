@@ -267,12 +267,13 @@ class PriceHistory:
             fail = True
 
         if fail:
-            err_msg = str(_exception)
+            err_msg = str(_exception) 
+            #cprint(err_msg, 'yellow') # debug line
             shared._DFS[self.ticker] = utils.empty_df()
             shared._ERRORS[self.ticker] = err_msg.split(': ', 1)[1]
             if raise_errors or (not YfConfig.debug.hide_exceptions):
                 raise _exception
-            else:
+            elif err_msg.find("is invalid,") == -1: # if there is place where this str exists it will not be loged 
                 logger.error(err_msg)
             if self._reconstruct_start_interval is not None and self._reconstruct_start_interval == interval:
                 self._reconstruct_start_interval = None
