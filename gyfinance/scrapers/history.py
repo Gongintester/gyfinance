@@ -267,17 +267,16 @@ class PriceHistory:
             fail = True
 
         if fail:
-            err_msg = str(_exception)
-            if err_msg.find("is invalid") != -1:
-                shared._DFS[self.ticker] = utils.empty_df()
-                shared._ERRORS[self.ticker] = err_msg.split(': ', 1)[1]
-                if raise_errors or (not YfConfig.debug.hide_exceptions):
-                    raise _exception
-                else:
-                    logger.error(err_msg)
-                if self._reconstruct_start_interval is not None and self._reconstruct_start_interval == interval:
-                    self._reconstruct_start_interval = None
-                return utils.empty_df()
+            err_msg = str(_exception) 
+            shared._DFS[self.ticker] = utils.empty_df()
+            shared._ERRORS[self.ticker] = err_msg.split(': ', 1)[1]
+            if raise_errors or (not YfConfig.debug.hide_exceptions) and err_msg.find("must be one of:") == -1:
+                raise _exception
+            else:
+                logger.error(err_msg)
+            if self._reconstruct_start_interval is not None and self._reconstruct_start_interval == interval:
+                self._reconstruct_start_interval = None
+            return utils.empty_df()
 
         # Select useful info from metadata
         quote_type = self._history_metadata["instrumentType"]
