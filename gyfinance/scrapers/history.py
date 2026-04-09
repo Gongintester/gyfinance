@@ -264,14 +264,14 @@ class PriceHistory:
         elif period and period not in self._history_metadata['validRanges'] and not utils.is_valid_period_format(period):
             # User provided a bad period
             _exception = YFInvalidPeriodError(self.ticker, period, ", ".join(self._history_metadata['validRanges']))
-            fail = False #we just ignore :)
+            fail = True
 
         if fail:
             err_msg = str(_exception)
             shared._DFS[self.ticker] = utils.empty_df()
             shared._ERRORS[self.ticker] = err_msg.split(': ', 1)[1]
-            if raise_errors or (not YfConfig.debug.hide_exceptions):
-                if _exception != None: raise _exception
+            if raise_errors or (not YfConfig.debug.hide_exceptions) and type(_exception) != YFInvalidPeriodError:
+                raise _exception
             else:
                 logger.error(err_msg)
             if self._reconstruct_start_interval is not None and self._reconstruct_start_interval == interval:
